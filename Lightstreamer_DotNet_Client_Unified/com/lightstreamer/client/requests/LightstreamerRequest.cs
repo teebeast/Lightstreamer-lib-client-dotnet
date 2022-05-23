@@ -124,7 +124,7 @@ namespace com.lightstreamer.client.requests
             result.Append(buffer);
             if (!string.ReferenceEquals(this.session, null))
             {
-                bool sessionUnneeded = ( !string.ReferenceEquals(defaultSessionId, null) && defaultSessionId.Equals(this.session) );
+                bool sessionUnneeded = !string.ReferenceEquals(defaultSessionId, null) && defaultSessionId.Equals(this.session);
                 if (!sessionUnneeded)
                 {
                     /*
@@ -206,8 +206,8 @@ namespace com.lightstreamer.client.requests
                         // percent-encoding; must be UTF-8, but we only have
                         // to encode simple ascii characters
                         quoted[j++] = '%';
-                        quoted[j++] = (char)( hex[( c >> 4 ) & 0xF] );
-                        quoted[j++] = (char)( hex[c & 0xF] );
+                        quoted[j++] = (char)hex[( c >> 4 ) & 0xF];
+                        quoted[j++] = (char)hex[c & 0xF];
                     }
                     else
                     {
@@ -239,7 +239,7 @@ namespace com.lightstreamer.client.requests
 
         private static bool isSpecial(int b)
         {
-            if (( b == '\r' ) || ( b == '\n' ))
+            if (b == '\r' || b == '\n')
             {
                 // line delimiters
                 return true;
@@ -249,7 +249,7 @@ namespace com.lightstreamer.client.requests
                 // used for percent-encoding
                 return true;
             }
-            else if (( b == '&' ) || ( b == '=' ))
+            else if (b == '&' || b == '=')
             {
                 // parameter delimiters
                 return true;

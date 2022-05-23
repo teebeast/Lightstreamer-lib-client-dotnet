@@ -114,7 +114,7 @@ namespace com.lightstreamer.client.transport.providers.netty
             }
 
             bool secure = isSSL(address);
-            int port = uri.Port == -1 ? ( secure ? 443 : 80 ) : uri.Port;
+            int port = uri.Port == -1 ? secure ? 443 : 80 : uri.Port;
 
             IFullHttpRequest httpRequest = new DefaultFullHttpRequest(HttpVersion.Http11, HttpMethod.Post, uri.PathAndQuery);
             httpRequest.Headers.Set(HttpHeaderNames.Host, uri.Host);

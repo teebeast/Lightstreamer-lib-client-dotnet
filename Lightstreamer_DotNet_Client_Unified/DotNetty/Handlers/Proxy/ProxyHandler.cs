@@ -394,7 +394,7 @@ namespace DotNetty.Handlers.Proxy
                 msg = "";
             }
 
-            StringBuilder buf = ( new StringBuilder(128 + msg.Length) ).Append(protocol()).Append(", ").Append(authScheme()).Append(", ").Append(ProxyAddress).Append(" => ").Append(DestinationAddress);
+            StringBuilder buf = new StringBuilder(128 + msg.Length).Append(protocol()).Append(", ").Append(authScheme()).Append(", ").Append(ProxyAddress).Append(" => ").Append(DestinationAddress);
             if (msg.Length > 0)
             {
                 buf.Append(", ").Append(msg);

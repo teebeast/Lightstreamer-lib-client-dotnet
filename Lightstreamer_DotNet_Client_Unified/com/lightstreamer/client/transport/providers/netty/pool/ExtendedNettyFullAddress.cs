@@ -62,9 +62,9 @@ namespace com.lightstreamer.client.transport.providers.netty.pool
         {
             const int prime = 31;
             int result = 1;
-            result = prime * result + ( ( address == null ) ? 0 : address.GetHashCode() );
-            result = prime * result + ( ( string.ReferenceEquals(cookies, null) ) ? 0 : cookies.GetHashCode() );
-            result = prime * result + ( ( extraHeaders == null ) ? 0 : extraHeaders.GetHashCode() );
+            result = prime * result + ( address == null ? 0 : address.GetHashCode() );
+            result = prime * result + ( string.ReferenceEquals(cookies, null) ? 0 : cookies.GetHashCode() );
+            result = prime * result + ( extraHeaders == null ? 0 : extraHeaders.GetHashCode() );
             return result;
         }
 

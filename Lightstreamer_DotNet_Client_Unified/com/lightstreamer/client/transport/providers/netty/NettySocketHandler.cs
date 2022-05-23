@@ -101,7 +101,7 @@ namespace com.lightstreamer.client.transport.providers.netty
             this.interruptionHandler = newInterruptionHandler;
         }
 
-        private async void errorAsync(IChannel ch)
+        private void errorAsync(IChannel ch)
         {
             if (logPool.IsDebugEnabled)
             {

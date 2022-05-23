@@ -53,7 +53,7 @@ namespace com.lightstreamer.client.session
                   return 0;
                 }*/
                 //Math.round is only used to get the long value 
-                if (this.firstMeanCalculated && (this.meanElaborationDelay > 0))
+                if (this.firstMeanCalculated && this.meanElaborationDelay > 0)
                 {
                     return (long)Math.Round(Math.Floor(this.meanElaborationDelay), MidpointRounding.AwayFromZero);
                 } else

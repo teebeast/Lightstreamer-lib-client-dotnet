@@ -325,7 +325,7 @@ namespace com.lightstreamer.client.session
 
             if (!avoidSwitch && this.Alive)
             {
-                Status nextPH = isPolling ? ( isHTTP ? Status.SWITCHING_POLLING_HTTP : Status.SWITCHING_POLLING_WS ) : ( isHTTP ? Status.SWITCHING_STREAMING_HTTP : Status.SWITCHING_STREAMING_WS );
+                Status nextPH = isPolling ? isHTTP ? Status.SWITCHING_POLLING_HTTP : Status.SWITCHING_POLLING_WS : isHTTP ? Status.SWITCHING_STREAMING_HTTP : Status.SWITCHING_STREAMING_WS;
                 this.changeStatus(nextPH);
                 this.startSwitchTimeout(reason, 0);
                 this.session.requestSwitch(this.statusPhase, reason, isComboForced, startRecovery);
@@ -339,7 +339,7 @@ namespace com.lightstreamer.client.session
                 reason = "new." + reason;
                 this.closeSession(false, reason, YES_RECOVERY);
 
-                Status nextPH = isPolling ? ( isHTTP ? Status.POLLING_HTTP : Status.POLLING_WS ) : ( isHTTP ? Status.STREAMING_HTTP : Status.STREAMING_WS );
+                Status nextPH = isPolling ? isHTTP ? Status.POLLING_HTTP : Status.POLLING_WS : isHTTP ? Status.STREAMING_HTTP : Status.STREAMING_WS;
                 this.changeStatus(nextPH);
 
                 this.prepareNewSessionInstance(isPolling, isComboForced, isHTTP, null, retryAgainIfStreamFails, false);
@@ -378,7 +378,7 @@ namespace com.lightstreamer.client.session
 
         private void bindSession(bool isForced, bool isPolling, bool isHTTP, string switchCause, bool startRecovery)
         {
-            Status nextPH = isPolling ? ( isHTTP ? Status.POLLING_HTTP : Status.POLLING_WS ) : ( isHTTP ? Status.STREAMING_HTTP : Status.STREAMING_WS );
+            Status nextPH = isPolling ? isHTTP ? Status.POLLING_HTTP : Status.POLLING_WS : isHTTP ? Status.STREAMING_HTTP : Status.STREAMING_WS;
             this.changeStatus(nextPH);
 
             this.prepareNewSessionInstance(isPolling, isForced, isHTTP, this.session, false, startRecovery);
@@ -431,7 +431,7 @@ namespace com.lightstreamer.client.session
 
             bool isPolling = this.@is(Status.STREAMING_WS) || this.@is(Status.STREAMING_HTTP) ? STREAMING_SESSION : POLLING_SESSION;
             bool isHTTP = this.@is(Status.STREAMING_WS) || this.@is(Status.POLLING_WS) ? WS_SESSION : HTTP_SESSION;
-            Status nextPH = isPolling ? ( isHTTP ? Status.POLLING_HTTP : Status.POLLING_WS ) : ( isHTTP ? Status.STREAMING_HTTP : Status.STREAMING_WS );
+            Status nextPH = isPolling ? isHTTP ? Status.POLLING_HTTP : Status.POLLING_WS : isHTTP ? Status.STREAMING_HTTP : Status.STREAMING_WS;
             this.changeStatus(nextPH);
 
             this.prepareNewSessionInstance(isPolling, forced, isHTTP, this.session, retryAgainIfStreamFails, true);
@@ -915,7 +915,7 @@ namespace com.lightstreamer.client.session
             {
                 bool isPolling = this.@is(Status.STREAMING_WS) || this.@is(Status.STREAMING_HTTP) ? STREAMING_SESSION : POLLING_SESSION;
                 bool isHTTP = this.@is(Status.STREAMING_WS) || this.@is(Status.POLLING_WS) ? WS_SESSION : HTTP_SESSION;
-                Status nextPH = isPolling ? ( isHTTP ? Status.POLLING_HTTP : Status.POLLING_WS ) : ( isHTTP ? Status.STREAMING_HTTP : Status.STREAMING_WS );
+                Status nextPH = isPolling ? isHTTP ? Status.POLLING_HTTP : Status.POLLING_WS : isHTTP ? Status.STREAMING_HTTP : Status.STREAMING_WS;
                 this.changeStatus(nextPH);
 
                 this.prepareNewSessionInstance(isPolling, forced, isHTTP, this.session, retryAgainIfStreamFails, true);

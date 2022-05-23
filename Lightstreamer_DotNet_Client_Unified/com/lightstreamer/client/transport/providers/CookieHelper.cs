@@ -32,10 +32,10 @@ namespace com.lightstreamer.client.transport.providers
             
             foreach (HttpCookie cookie in cookies)
             {
-                message += ( "\r\n    " + cookie.ToString() );
-                message += ( " - domain " + cookie.Get("Domain") );
-                message += ( " - path " + cookie.Get("Path") );
-                message += ( " - version " + cookie.Get("Version") );
+                message += "\r\n    " + cookie.ToString();
+                message += " - domain " + cookie.Get("Domain");
+                message += " - path " + cookie.Get("Path");
+                message += " - version " + cookie.Get("Version");
             }
             log.Debug(message);
         }

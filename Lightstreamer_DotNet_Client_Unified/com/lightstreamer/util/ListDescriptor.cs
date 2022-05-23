@@ -158,7 +158,7 @@ namespace com.lightstreamer.util
             }
         }
 
-        public ListDescriptor MemberwiseClone()
+        public new ListDescriptor MemberwiseClone()
         {
             ListDescriptor copy = (ListDescriptor)base.MemberwiseClone();
             copy.list = (string[])list.Clone();

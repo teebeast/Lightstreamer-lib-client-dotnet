@@ -226,7 +226,7 @@ namespace com.lightstreamer.client.transport.providers.netty
             /// <summary>
             /// Closes the channel if it has not been released yet.
             /// </summary>
-            public virtual async void close()
+            public virtual async Task close()
             {
                 if (!closed)
                 {
@@ -254,7 +254,7 @@ namespace com.lightstreamer.client.transport.providers.netty
                 // NB putting a closed channel in the pool has no bad effect and further completes its life cycle
                 if (!released)
                 {
-                    pool.ReleaseAsync(ch);
+                    await pool.ReleaseAsync(ch);
                 }
                 else
                 {

@@ -751,7 +751,7 @@ namespace com.lightstreamer.client.session
             {
                 if (this.isPolling)
                 {
-                    this.slowing.testPollSync(usedTimeout, ( DateTime.Now ).Ticks);
+                    this.slowing.testPollSync(usedTimeout, DateTime.Now.Ticks);
                 }
                 this.bindSession("loop");
 
@@ -801,7 +801,7 @@ namespace com.lightstreamer.client.session
 
         protected internal virtual void createSent()
         {
-            this.sentTime = ( DateTime.Now ).Ticks;
+            this.sentTime = DateTime.Now.Ticks;
 
             if (isNot(OFF) && isNot(SLEEP))
             {
@@ -955,7 +955,7 @@ namespace com.lightstreamer.client.session
 
         private long calculateRetryDelay()
         {
-            long spent = ( DateTime.Now ).Ticks - this.sentTime;
+            long spent = DateTime.Now.Ticks - this.sentTime;
             long currentRetryDelay = options.CurrentRetryDelay;
             return spent > currentRetryDelay ? 0 : currentRetryDelay - spent;
         }
@@ -1107,7 +1107,7 @@ namespace com.lightstreamer.client.session
                 lock (this)
                 {
                     long clientId = request.ClientRequestId;
-                    bool forbidden = ( clientId < lastPendingRequestId || clientId <= lastReceivedRequestId );
+                    bool forbidden = clientId < lastPendingRequestId || clientId <= lastReceivedRequestId;
                     if (!forbidden)
                     {
                         lastPendingRequestId = clientId;
@@ -1246,7 +1246,7 @@ namespace com.lightstreamer.client.session
                 if (outerInstance.@is(CREATING))
                 {
                     //New session!
-                    if (!string.ReferenceEquals(outerInstance.sessionId, null) && !( outerInstance.sessionId.Equals(newSession) ))
+                    if (!string.ReferenceEquals(outerInstance.sessionId, null) && !outerInstance.sessionId.Equals(newSession))
                     {
                         // nothing can be trusted here
                         outerInstance.log.Debug("Unexpected session " + outerInstance.sessionId + " found while initializing " + newSession);
@@ -1264,7 +1264,7 @@ namespace com.lightstreamer.client.session
                         return;
                     }
                     /* calculate reconnect timeout, i.e. the actual time we spent to send the request and receive the reponse (the roundtirp) */
-                    long spentTime = ( DateTime.Now ).Ticks - outerInstance.sentTime;
+                    long spentTime = DateTime.Now.Ticks - outerInstance.sentTime;
                     //we add to our connectTimeout the spent roundtrip and we'll use that time as next connectCheckTimeout
                     //ok, we wanna give enough time to the client to connect if necessary, but we should not exaggerate :)
                     //[obviously if spentTime can't be > this.policyBean.connectTimeout after the first connection, 
@@ -1273,7 +1273,7 @@ namespace com.lightstreamer.client.session
                     outerInstance.reconnectTimeout = ( spentTime > ct ? ct : spentTime ) + ct;
                 }
 
-                outerInstance.slowing.startSync(outerInstance.isPolling, outerInstance.isForced, ( DateTime.Now ).Ticks);
+                outerInstance.slowing.startSync(outerInstance.isPolling, outerInstance.isForced, DateTime.Now.Ticks);
                 onEvent();
 
                 if (outerInstance.@is(CREATED))
@@ -1493,7 +1493,7 @@ namespace com.lightstreamer.client.session
                     outerInstance.log.Debug("Sync event while " + outerInstance.phase);
                 }
 
-                bool syncOk = outerInstance.slowing.syncCheck(seconds, !outerInstance.isPolling, (double)( ( DateTime.Now ).Ticks / TimeSpan.TicksPerMillisecond ));
+                bool syncOk = outerInstance.slowing.syncCheck(seconds, !outerInstance.isPolling, (double)( DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond ));
                 if (syncOk)
                 {
                     if (outerInstance.@is(RECEIVING))
@@ -1906,7 +1906,7 @@ namespace com.lightstreamer.client.session
                 }
                 else
                 {
-                    String cause = (closedOnServer ? "closed on server" : "socket error");
+                    String cause = closedOnServer ? "closed on server" : "socket error";
                     long crd = calculateRetryDelay();
                     log.Debug("Start new session. Cause: " + cause + " in " + crd);
 

@@ -59,7 +59,7 @@ namespace DotNetty.Handlers.Proxy
                 return strVal;
             }
 
-            StringBuilder buf = ( new StringBuilder(128) ).Append(StringUtil.SimpleClassName(this)).Append('(').Append(Protocol).Append(", ").Append(AuthScheme).Append(", ").Append(ProxyAddress).Append(" => ").Append(DestinationAddress).Append(')');
+            StringBuilder buf = new StringBuilder(128).Append(StringUtil.SimpleClassName(this)).Append('(').Append(Protocol).Append(", ").Append(AuthScheme).Append(", ").Append(ProxyAddress).Append(" => ").Append(DestinationAddress).Append(')');
 
             return strVal = buf.ToString();
         }

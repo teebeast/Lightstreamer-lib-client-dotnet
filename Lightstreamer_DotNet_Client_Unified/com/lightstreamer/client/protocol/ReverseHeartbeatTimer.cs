@@ -220,7 +220,7 @@ namespace com.lightstreamer.client.protocol
                     Debug.Assert(value > 0 && maxIntervalMs > 0);
                     currentIntervalMs = Math.Min(value, maxIntervalMs);
                 }
-                disableHeartbeats = ( currentIntervalMs == 0 );
+                disableHeartbeats = currentIntervalMs == 0;
                 if (oldIntervalMs != currentIntervalMs)
                 {
                     if (log.IsDebugEnabled)

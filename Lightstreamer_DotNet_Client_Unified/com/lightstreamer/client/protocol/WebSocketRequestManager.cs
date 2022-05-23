@@ -85,7 +85,7 @@ namespace com.lightstreamer.client.protocol
                {
                    log.Debug("Timeout event [currentConnectTimeoutWS]");
                }
-               if ( (_wsTransport.State.Equals(InternalState.CONNECTING)) || (_wsTransport.State.Equals(InternalState.UNEXPECTED_ERROR)) )
+               if ( _wsTransport.State.Equals(InternalState.CONNECTING) || _wsTransport.State.Equals(InternalState.UNEXPECTED_ERROR) )
                {
                    sessionLog.Debug("WS connection: aborted");
                    _openWsFuture.reject();

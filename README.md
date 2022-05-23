@@ -1,3 +1,5 @@
+Note: This fork aims to run against IG. "LS_cid" has changed to version 5.0.5 and prior to run.
+
 # Lightstreamer .NET Standard Client SDK 
 
 Lightstreamer .NET Standard Client SDK enables any application which supports Microsoft .Net Standard 2.0 to communicate bidirectionally with a **Lightstreamer Server**.

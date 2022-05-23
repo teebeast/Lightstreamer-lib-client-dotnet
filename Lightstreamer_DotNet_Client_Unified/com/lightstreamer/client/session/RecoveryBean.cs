@@ -125,7 +125,7 @@ namespace com.lightstreamer.client.session
         {
             if (recovery)
             {
-                return ( maxTimeMs - ( stopWatch.ElapsedMilliseconds ) );
+                return maxTimeMs - stopWatch.ElapsedMilliseconds;
             }
             else
             {

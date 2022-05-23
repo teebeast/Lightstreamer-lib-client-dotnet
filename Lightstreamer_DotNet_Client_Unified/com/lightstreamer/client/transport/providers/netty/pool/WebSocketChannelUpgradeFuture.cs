@@ -76,7 +76,7 @@ namespace com.lightstreamer.client.transport.providers.netty.pool
                 {
                     Thread.Sleep(5);
 
-                    if ((maxTimes*10) >= (timeout))
+                    if (maxTimes*10 >= timeout)
                     {
                         _hsws = true;
                         machine.next(Phase.UPGRADE_FAILURE);

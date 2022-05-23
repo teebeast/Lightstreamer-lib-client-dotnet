@@ -41,7 +41,7 @@ namespace com.lightstreamer.client.requests
             }
 
             this.maxBandwidth = maxBandwidth;
-            this.clientRequestId = ( parent == null ? requestId : parent.ClientRequestId );
+            this.clientRequestId = parent == null ? requestId : parent.ClientRequestId;
         }
 
         public virtual double MaxBandwidth

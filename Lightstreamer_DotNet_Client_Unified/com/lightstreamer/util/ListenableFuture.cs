@@ -18,7 +18,7 @@ namespace com.lightstreamer.util
         /// </summary>
         public static ListenableFuture fulfilled()
         {
-            return ( new ListenableFuture() ).fulfill();
+            return new ListenableFuture().fulfill();
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace com.lightstreamer.util
         /// </summary>
         public static ListenableFuture rejected()
         {
-            return ( new ListenableFuture() ).reject();
+            return new ListenableFuture().reject();
         }
 
         /// <summary>

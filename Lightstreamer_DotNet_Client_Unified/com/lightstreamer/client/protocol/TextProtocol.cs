@@ -939,7 +939,7 @@ namespace com.lightstreamer.client.protocol
                 return;
             }
             int table = myParseInt(groupCollection[1].ToString(), "subscription", message);
-            if (( groupCollection[3].ToString() != null ) && !( groupCollection[3].ToString().Equals("") ))
+            if (groupCollection[3].ToString() != null && !groupCollection[3].ToString().Equals(""))
             {
                 string frequency = groupCollection[3].ToString();
                 myParseDouble(frequency, "frequency", message); // preliminary check
@@ -1040,7 +1040,7 @@ namespace com.lightstreamer.client.protocol
                 Match match = matcher[0];
                 GroupCollection groupCollection = match.Groups;
 
-                if (( groupCollection[2].ToString() != null ) && !( groupCollection[2].ToString().Equals("") ))
+                if (groupCollection[2].ToString() != null && !groupCollection[2].ToString().Equals(""))
                 {
                     string bandwidth = groupCollection[2].ToString();
 
@@ -1197,8 +1197,8 @@ namespace com.lightstreamer.client.protocol
                     onIllegalMessage("Missing item field in message: " + message);
                 }
                 Debug.Assert(message.Substring(0, tableIndex).Equals("U,")); // tested by the caller
-                int table = myParseInt(message.Substring(tableIndex, ( itemIndex - 1 ) - tableIndex), "subscription", message);
-                int item = myParseInt(message.Substring(itemIndex, ( fieldsIndex - 1 ) - itemIndex), "item", message);
+                int table = myParseInt(message.Substring(tableIndex, itemIndex - 1 - tableIndex), "subscription", message);
+                int item = myParseInt(message.Substring(itemIndex, fieldsIndex - 1 - itemIndex), "item", message);
 
                 if (!processCountableNotification())
                 {

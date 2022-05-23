@@ -44,7 +44,9 @@ namespace com.lightstreamer.client.requests
             this.addParameter("LS_polling_millis", requestedPollingInterval);
             this.addParameter("LS_idle_millis", requestedIdleTimeout);
 
-            this.addParameter("LS_cid", "jqWtj1twChtfDxikwp1ltvcB4CJ7Kj uWur8vy1sj.io");
+            //this.addParameter("LS_cid", "jqWtj1twChtfDxikwp1ltvcB4CJ7Kj uWur8vy1sj.io");     // current (5.1.3 or later)
+            //this.addParameter("LS_cid", "jqWtj1twChtfDxikwp1ltvcB4CJ5Kj uWur8vy1sj.gk");     // 5.1.0
+            this.addParameter("LS_cid", "jqWtj1twChtfDxikwp1ltvc64CJ4Ji kOj2Cr");   // before 5.1.0 - needed when connecting with IG
 
             if (options.InternalMaxBandwidth == 0)
             {

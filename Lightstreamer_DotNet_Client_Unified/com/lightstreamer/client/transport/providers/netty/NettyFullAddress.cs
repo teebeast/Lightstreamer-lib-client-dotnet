@@ -64,7 +64,7 @@ namespace com.lightstreamer.client.transport.providers.netty
                 {
                     return null;
                 }
-                return ( new NettyProxy(proxy) ).Proxy;
+                return new NettyProxy(proxy).Proxy;
             }
         }
 

@@ -137,9 +137,9 @@ namespace com.lightstreamer.client.session
                 }
             }
 
-            internal async virtual void openWS()
+            internal virtual void openWS()
             {
-                string cLink = ( string.ReferenceEquals(controlLink, null) ? outerInstance.PushServerAddress : controlLink );
+                string cLink = controlLink ?? outerInstance.PushServerAddress;
                 Debug.Assert(openWsFuture == null || openWsFuture.getState() == ListenableFuture.State.ABORTED);
 
                 openWsFuture = outerInstance.protocol.openWebSocketConnection(cLink).onFulfilled(new MyRunnableConnectOK(this)).onRejected(new MyRunnableError(this));

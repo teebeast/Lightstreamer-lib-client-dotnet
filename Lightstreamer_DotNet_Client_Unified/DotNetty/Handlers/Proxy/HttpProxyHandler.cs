@@ -130,7 +130,7 @@ namespace DotNetty.Handlers.Proxy
 
         protected internal override bool handleResponse(IChannelHandlerContext ctx, object response)
         {
-            if (( response is IFullHttpResponse ) || ( response is DefaultHttpResponse ))
+            if (response is IFullHttpResponse || response is DefaultHttpResponse)
             {
                 DefaultHttpResponse def = (DefaultHttpResponse)response;
                 if (def != null)

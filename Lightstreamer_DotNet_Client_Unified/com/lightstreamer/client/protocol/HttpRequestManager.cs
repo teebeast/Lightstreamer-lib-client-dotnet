@@ -431,7 +431,7 @@ namespace com.lightstreamer.client.protocol
                 return false;
             }
             /* add the other requests to the combined request: they share the server address and the request name */
-            while (( requestLimit == 0 || ( combinedRequest.length() + batch.NextRequestLength ) < requestLimit ) && batch.Length > 0)
+            while (( requestLimit == 0 || combinedRequest.length() + batch.NextRequestLength < requestLimit ) && batch.Length > 0)
             {
                 RequestObjects next = batch.shift();
                 if (next.tutor.shouldBeSent())
