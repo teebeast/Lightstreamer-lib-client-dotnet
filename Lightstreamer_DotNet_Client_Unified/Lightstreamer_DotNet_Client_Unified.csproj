@@ -7,6 +7,6 @@
   <ItemGroup>
     <PackageReference Include="CookieManager" Version="2.0.0" />
     <PackageReference Include="DotNetty.Codecs.Http" Version="0.7.2" />
-    <PackageReference Include="System.Management" Version="6.0.0" />
+    <PackageReference Include="System.Management" Version="4.5.0" />
   </ItemGroup>
 </Project>
